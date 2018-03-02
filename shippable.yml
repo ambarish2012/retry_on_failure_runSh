@@ -29,7 +29,7 @@ jobs:
         if [[ $counterVal == $max_retries ]]
         then
             # reset counter and do nothing
-              shipctl post_resource_state $JOB_NAME failure_counter 0
+            hipctl post_resource_state $JOB_NAME failure_counter 0
         else
             # increment failure counter
             let "counterVal++"
