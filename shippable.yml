@@ -39,5 +39,5 @@ jobs:
               # retrigger job via API
               # replace 62911 with the jobid of your runSh job. Click on the runSh job and scroll to the bottom of the page.
               sleep 30
-              curl -X POST -H "Authorization: apiToken $API_TOKEN" -H "Content-Type: application/json" -H "Accept: application/json" "https://api.shippable.com/resources/62911/triggerNewBuildRequest"'
+              'curl -X POST -H "Authorization: apiToken $API_TOKEN" -H "Content-Type: application/json" -H "Accept: application/json" "https://api.shippable.com/resources/62911/triggerNewBuildRequest"'
           fi
