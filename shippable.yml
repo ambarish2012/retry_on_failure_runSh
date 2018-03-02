@@ -21,22 +21,24 @@ jobs:
             - cat phantom_file.sh
     on_success:
       script:
-        #reset failure counter
+        #reset failure_counter
         - shipctl post_resource_state $JOB_NAME failure_counter 0
     on_failure:
       script: |
         counterVal=$(shipctl get_resource_state failure_counter)
         if [[ $counterVal == $max_retries ]]
         then
-            # reset counter and do nothing
-            hipctl post_resource_state $JOB_NAME failure_counter 0
+            # reset failure_counter and do nothing
+            shipctl post_resource_state $JOB_NAME failure_counter 0
         else
-            # increment failure counter
+            # increment failure_counter
             let "counterVal++"
             echo "Retring on failure, counter: "$counterVal
             shipctl post_resource_state $JOB_NAME failure_counter counterVal
+            
             # retrigger job via API
-            # replace 62911 with the jobid of your runSh job. Click on the runSh job and scroll to the bottom of the page.
+            # replace 62911 with the jobId of your runSh job. To find the jobId, click on the runSh job in the subscription 
+            # dashboard and scroll to the bottom of the page.
             sleep 30
             'curl -X POST -H "Authorization: apiToken $API_TOKEN" -H "Content-Type: application/json" -H "Accept: application/json" "https://api.shippable.com/resources/62911/triggerNewBuildRequest"'
         fi
