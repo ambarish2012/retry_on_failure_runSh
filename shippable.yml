@@ -40,5 +40,5 @@ jobs:
             # replace 62911 with the jobId of your runSh job. To find the jobId, click on the runSh job in the subscription 
             # dashboard and scroll to the bottom of the page.
             sleep 30
-            'curl -X POST -H "Authorization: apiToken $API_TOKEN" -H "Content-Type: application/json" -H "Accept: application/json" "https://api.shippable.com/resources/62911/triggerNewBuildRequest"'
+            curl -X POST -H "Authorization: apiToken $API_TOKEN" -H "Content-Type: application/json" -H "Accept: application/json" "https://api.shippable.com/resources/62911/triggerNewBuildRequest"
         fi
