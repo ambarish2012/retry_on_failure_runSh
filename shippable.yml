@@ -30,8 +30,10 @@ jobs:
             echo "Retry attempt# "$RETRY_COUNTER
         fi
         
-        if [[ $RETRY_COUNTER <= $MAX_RETRIES ]]
+        if [[ $RETRY_COUNTER > $MAX_RETRIES ]]
         then
+            echo "Job will not be rescheduled since $MAX_RETRIES count has been reached"
+        else
             # increment failure_counter
             let RETRY_COUNTER++
             
@@ -39,7 +41,5 @@ jobs:
             # replace 62911 with the jobId of your runSh job. To find the jobId, click on the runSh job in the subscription 
             # dashboard and scroll to the bottom of the page.
             sleep 30
-            curl -X POST -H "Authorization: apiToken $API_TOKEN" -H "Content-Type: application/json" -H "Accept: application/json" -d "{\"globalEnv\":{\"RETRY_COUNTER\":\"$RETRY_COUNTER\"}}" "https://api.shippable.com/resources/62911/triggerNewBuildRequest"
-        else
-            echo "Job will not be rescheduled since $MAX_RETRIES count has been reached"
+            curl -X POST -H "Authorization: apiToken $API_TOKEN" -H "Content-Type: application/json" -H "Accept: application/json" -d "{\"globalEnv\":{\"RETRY_COUNTER\":\"$RETRY_COUNTER\"}}" "https://api.shippable.com/resources/62911/triggerNewBuildRequest"    
         fi
