@@ -32,7 +32,7 @@ jobs:
             shipctl post_resource_state $JOB_NAME failure_counter 0
         else
             # increment failure_counter
-            let "counterVal++"
+            let counterVal++
             echo "Retring on failure, counter: "$counterVal
             shipctl post_resource_state $JOB_NAME failure_counter counterVal
             
