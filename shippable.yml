@@ -27,7 +27,7 @@ jobs:
       script:
         - counterVal=$(shipctl get_resource_state "failure_counter") 
         - |
-          if [ "$counterVal" -eq $max_retries ]
+          if [ $counterVal -eq $max_retries ]
           then
               # reset counter and do nothing
               shipctl post_resource_state $JOB_NAME failure_counter 0
