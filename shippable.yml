@@ -32,7 +32,7 @@ jobs:
         
         if [[ $RETRY_COUNTER > $MAX_RETRIES ]]
         then
-            echo "Job will not be rescheduled since $MAX_RETRIES count has been reached"
+            echo "Job will not be rescheduled since it has been rescheduled on error for the configured maximum"
         else
             # increment failure_counter
             let RETRY_COUNTER++
