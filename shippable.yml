@@ -34,7 +34,7 @@ jobs:
             # increment failure_counter
             let counterVal++
             echo "Retring on failure, counter: "$counterVal
-            shipctl post_resource_state $JOB_NAME failure_counter counterVal
+            shipctl post_resource_state $JOB_NAME failure_counter $counterVal
             
             # retrigger job via API
             # replace 62911 with the jobId of your runSh job. To find the jobId, click on the runSh job in the subscription 
