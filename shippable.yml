@@ -26,6 +26,7 @@ jobs:
           else
               # increment failure counter
               let "counterVal++"
+              echo "Retring on failure, counter: "$counterVal
               shipctl post_resource_state $JOB_NAME failure_counter counterVal
               # retrigger job via API
               # replace apiToken with your own API token - http://docs.shippable.com/platform/api/api-tokens/
