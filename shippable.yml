@@ -29,6 +29,7 @@ jobs:
               shipctl post_resource_state $JOB_NAME failure_counter counterVal
               # retrigger job via API
               # replace apiToken with your own API token - http://docs.shippable.com/platform/api/api-tokens/
-              # replace 61440 with the jobid of your runSh job. Click on the runSh job and scroll to the bottom of the page.
+              # replace 62911 with the jobid of your runSh job. Click on the runSh job and scroll to the bottom of the page.
+              sleep 30
               curl -X POST -H "Authorization: apiToken 785eb21a-89b9-490d-b3b3-a7920cda51c9" -H "Content-Type: application/json" -H "Accept: application/json" "https://api.shippable.com/resources/61440/triggerNewBuildRequest"'
           fi
