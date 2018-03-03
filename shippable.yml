@@ -8,7 +8,6 @@ resources:
 jobs:
   - name: retriable_job
     type: runSh
-    allowPublicAccess: true
     steps:
       - IN: api_token
       - TASK:
